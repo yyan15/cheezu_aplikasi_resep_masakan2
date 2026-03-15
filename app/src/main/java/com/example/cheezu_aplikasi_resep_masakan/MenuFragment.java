@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -40,48 +41,55 @@ public class MenuFragment extends Fragment {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        DividerItemDecoration divider =
+                new DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL);
+
+        recyclerView.addItemDecoration(divider);
+
         recipeList = new ArrayList<>();
 
         recipeList.add(new Recipe(
                 R.drawable.burger,
                 "Burger",
-                "20 menit",
-                "Bahan:\n- Roti burger\n- Daging sapi\n- Selada\n- Keju\n\nLangkah:\n1. Panggang daging\n2. Susun roti, daging, sayur\n3. Tambahkan saus"
+                "20 minutes",
+                "Ingredients:\n- Burger bun\n- Beef patty\n- Lettuce\n- Cheese\n\nSteps:\n1. Grill the beef patty.\n2. Toast the burger buns.\n3. Assemble the bun, patty, lettuce, and cheese.\n4. Add sauce and serve."
         ));
 
         recipeList.add(new Recipe(
                 R.drawable.pizza,
                 "Pizza",
-                "30 menit",
-                "Bahan:\n- Adonan pizza\n- Saus tomat\n- Keju\n\nLangkah:\n1. Oles saus pada adonan\n2. Tambahkan topping\n3. Panggang di oven"
+                "30 minutes",
+                "Ingredients:\n- Pizza dough\n- Tomato sauce\n- Mozzarella cheese\n\nSteps:\n1. Spread tomato sauce on the dough.\n2. Add cheese and toppings.\n3. Bake in the oven for 15–20 minutes."
         ));
 
         recipeList.add(new Recipe(
                 R.drawable.noodles,
                 "Noodles",
-                "10 menit",
-                "Bahan:\n- Mie\n- Sayuran\n- Kecap\n\nLangkah:\n1. Rebus mie\n2. Tumis bumbu\n3. Campurkan mie dengan bumbu"
+                "10 minutes",
+                "Ingredients:\n- Noodles\n- Vegetables\n- Soy sauce\n\nSteps:\n1. Boil the noodles.\n2. Stir-fry vegetables in a pan.\n3. Add noodles and soy sauce.\n4. Mix well and serve."
         ));
 
         recipeList.add(new Recipe(
                 R.drawable.sushi,
                 "Sushi",
-                "25 menit",
-                "Bahan:\n- Nasi sushi\n- Rumput laut\n- Ikan\n\nLangkah:\n1. Siapkan nasi\n2. Letakkan di nori\n3. Gulung dan potong"
+                "25 minutes",
+                "Ingredients:\n- Sushi rice\n- Nori (seaweed)\n- Fish or vegetables\n\nSteps:\n1. Spread sushi rice on the nori sheet.\n2. Add fish or vegetables.\n3. Roll tightly.\n4. Slice into pieces and serve."
         ));
 
         recipeList.add(new Recipe(
                 R.drawable.dumpling,
                 "Dumplings",
-                "20 menit",
-                "Bahan:\n- Kulit dumpling\n- Daging cincang\n\nLangkah:\n1. Isi kulit dengan daging\n2. Lipat dumpling\n3. Kukus atau goreng"
+                "20 minutes",
+                "Ingredients:\n- Dumpling wrappers\n- Minced meat\n\nSteps:\n1. Place filling in the wrapper.\n2. Fold and seal the dumpling.\n3. Steam or pan-fry until cooked."
         ));
 
         recipeList.add(new Recipe(
                 R.drawable.onigiri,
                 "Onigiri",
-                "10 menit",
-                "Bahan:\n- Nasi\n- Nori\n\nLangkah:\n1. Bentuk nasi segitiga\n2. Bungkus dengan nori\n3. Tambahkan isian jika suka"
+                "10 minutes",
+                "Ingredients:\n- Cooked rice\n- Nori (seaweed)\n\nSteps:\n1. Shape the rice into a triangle.\n2. Add filling if desired.\n3. Wrap with nori and serve."
         ));
 
         adapter = new RecipeAdapter(getContext(), recipeList);
