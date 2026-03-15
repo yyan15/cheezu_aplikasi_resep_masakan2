@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="#FFF7F7"
     android:orientation="vertical"
     android:padding="20dp"
     tools:context=".HomeFragment">
@@ -15,6 +14,7 @@
         android:layout_height="159dp"
         android:layout_gravity="center"
         android:layout_marginBottom="20sp"
+        android:contentDescription="@string/app_logo"
         android:src="@drawable/logo" />
 
     <TextView
@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins"
-        android:text="Welcome to Cheezu Recipe App"
+        android:text="@string/welcome_message"
         android:textAlignment="center"
         android:textSize="23sp"
         android:textStyle="bold" />
@@ -30,5 +30,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:padding="4dp"
+        tools:listitem="@layout/item_food" />
 </LinearLayout>
