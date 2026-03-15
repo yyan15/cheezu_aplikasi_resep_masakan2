@@ -3,62 +3,91 @@ package com.example.cheezu_aplikasi_resep_masakan;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link MenuFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+import java.util.List;
+
 public class MenuFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    RecyclerView recyclerView;
+    RecipeAdapter adapter;
+    List<Recipe> recipeList;
 
     public MenuFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment MenuFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static MenuFragment newInstance(String param1, String param2) {
         MenuFragment fragment = new MenuFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_menu, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_menu, container, false);
+
+        recyclerView = view.findViewById(R.id.recyclerViewMenu);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        recipeList = new ArrayList<>();
+
+        recipeList.add(new Recipe(
+                R.drawable.burger,
+                "Burger",
+                "20 menit",
+                "Bahan:\n- Roti burger\n- Daging sapi\n- Selada\n- Keju\n\nLangkah:\n1. Panggang daging\n2. Susun roti, daging, sayur\n3. Tambahkan saus"
+        ));
+
+        recipeList.add(new Recipe(
+                R.drawable.pizza,
+                "Pizza",
+                "30 menit",
+                "Bahan:\n- Adonan pizza\n- Saus tomat\n- Keju\n\nLangkah:\n1. Oles saus pada adonan\n2. Tambahkan topping\n3. Panggang di oven"
+        ));
+
+        recipeList.add(new Recipe(
+                R.drawable.noodles,
+                "Noodles",
+                "10 menit",
+                "Bahan:\n- Mie\n- Sayuran\n- Kecap\n\nLangkah:\n1. Rebus mie\n2. Tumis bumbu\n3. Campurkan mie dengan bumbu"
+        ));
+
+        recipeList.add(new Recipe(
+                R.drawable.sushi,
+                "Sushi",
+                "25 menit",
+                "Bahan:\n- Nasi sushi\n- Rumput laut\n- Ikan\n\nLangkah:\n1. Siapkan nasi\n2. Letakkan di nori\n3. Gulung dan potong"
+        ));
+
+        recipeList.add(new Recipe(
+                R.drawable.dumpling,
+                "Dumplings",
+                "20 menit",
+                "Bahan:\n- Kulit dumpling\n- Daging cincang\n\nLangkah:\n1. Isi kulit dengan daging\n2. Lipat dumpling\n3. Kukus atau goreng"
+        ));
+
+        recipeList.add(new Recipe(
+                R.drawable.onigiri,
+                "Onigiri",
+                "10 menit",
+                "Bahan:\n- Nasi\n- Nori\n\nLangkah:\n1. Bentuk nasi segitiga\n2. Bungkus dengan nori\n3. Tambahkan isian jika suka"
+        ));
+
+        adapter = new RecipeAdapter(getContext(), recipeList);
+
+        recyclerView.setAdapter(adapter);
+
+        return view;
     }
 }
